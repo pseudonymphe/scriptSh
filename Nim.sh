@@ -7,27 +7,62 @@ echo "*************** ARE YOU READY ? ******************"
 echo "**************************************************"
 echo ""
 echo ""
-echo "What is your name ?"
+echo "What is your name?"
 read name
-echo "Hello, $name !"
 echo ""
+echo "Hello, $name!"
 echo ""
-
 
 game_running=true
-let num
+nbElmt=20
 
-while [ "$game_running" = true ]
+echo "There are 20 sticks"
+echo "| | | | | | | | | | | | | | | | | | | |"
+echo "You must remove 1 - 3 sticks for each turn, and be the last to remove them."
+echo ""
+echo "Try to beat the computer!"
+echo ""
+
+while [ $nbElmt -gt 0 ]
 do
-    echo "| | | | | | | | | | | | | | | | | | | |"
-    echo "There are $num sticks. You can take between 1 and 3. How many do you choose ?"
-    read choice
-    if [ "$choice" -lt 1 ] && [ "$choice" -gt 3 ]
+    # PLAYER'S TURN
+    echo "..........................................."
+    echo "..............PLAYER'S TURN................"
+    echo "..........................................."
+    echo "How many sticks do you choose to remove?"
+    read playerChoice
+        if [ $playerChoice -lt 1 ] || [ $playerChoice -gt 3 ]
+        then
+            echo "Please choose a number between 1 and 3."
+            echo ""
+            read playerChoice
+            let "nbElmt = nbElmt - playerChoice"
+            echo ""
+            echo "There are >> $nbElmt << sticks left"
+            echo ""
+        elif [ $playerChoice -ge 1 ] || [ $playerChoice -le 3 ]
+        then
+            let "nbElmt = nbElmt - playerChoice"
+            echo ""
+            echo "There are >> $nbElmt << sticks left"
+            echo ""
+        fi
+    # COMPUTER'S TURN
+    echo "..........................................."
+    echo "............COMPUTER'S TURN................"
+    echo "..........................................."
+    echo ""
+    let "aiChoice = 4 - playerChoice"
+    echo "Computer takes >> $aiChoice <<"
+    echo ""
+    let "nbElmt = nbElmt - aiChoice"
+    echo "There are >> $nbElmt << sticks left"
+    echo ""
+    if [ $nbElmt -eq 0 ]
     then
-        echo "Please choose between 1 and 3."
-    elif [ "$choice" -eq 1 ] || [ "$choice" -eq 3 ]
-    then
-        echo "Ok"
-        $num == $num-$choice
+        echo "*******************************************"
+        echo "************** GAME OVER ******************"
+        echo "*******************************************"
+        game_running=falses
     fi
 done
