@@ -1,3 +1,13 @@
 # scriptSh
+                    
+     _ | _  _  _  _ 
+\/\/(-`|(_ (_)|||(-`
+                    
+                    
+Here you will find 2 games.
 
-Here are 2 assignments created on Visual Studio Code with bash script. 
+Nim - a simple game of mathematics against a computer. Do you think you can win?
+
+The Maze - Get out of the maze to win!
+
+Good luck, and may the force be with you.
