@@ -1,8 +1,6 @@
 # scriptSh
                     
-     _ | _  _  _  _ 
-\/\/(-`|(_ (_)|||(-`
-                    
+HELLO !
                     
 Here you will find 2 games.
 
